@@ -160,3 +160,8 @@ how the AsyncNewPost variable is used
 
 END OF 4TH COMMIT
 --------------------------------------------------
+b. Lazy Loading with React Suspense: 
+skip this video, see video 216
+
+c. Routing and Server Deployment: 
+See video 217
