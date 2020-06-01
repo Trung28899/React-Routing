@@ -77,6 +77,9 @@ postSelectedHandler = (id) => {
     this.props.history.push({ pathname: "/" + id });
 };
 
+- Redirecting path: See Blog.js
+<Redirect from='/' to='/posts/' />
+
 5. Understanding Routing Path: 
 - path="/:id" : indicate dynamic path that will be
 passed by the Link. See in Blog.js
@@ -113,3 +116,47 @@ passed by the Link. See in Blog.js
 
 <Route path={this.props.match.url + '/:id'} 
 exact component={FullPost} />
+
+6. Routing tricks: 
+- Redirect conditionally: using state
+
+See NewPost.js
+hit "Add Post" > Redirected to /posts
+might have to wait a little for http request
+
+- Using the history Prop to Redirect: implement this code
+after a http call was successfully done 
+(see in NewPost.js > postDataHandler())
+this.props.history.push("posts");
+or
+this.props.history.replace("posts");
+
+- Working with guard: The idea is to have a auth state
+that conditionally render the route component
+
+For ie: 
+{this.state.auth ? (
+            <Route path='/new-post' component={NewPost} />
+        ) : null}
+
+- Handling 404 case: can try to implement in Blog.js
++, When there is no path matching the Route that are 
+specified in the <Switch>. Should show some kind of 404 Not found
+page
+
++, Inside <Switch>, implement the LAST ROUTE 
+<Route render={() => <h1>404 Not Found !</h1>}>
+so that when the page doesn't find the correct Route, 
+it will display the Not Found Page
+
+END OF 1ST - 3RD COMMIT
+--------------------------------------------------
+7. Advanced Technique: 4TH COMMIT
+a. Lazy Loading: 
+- Is a way of import package dynamically for better 
+User Experience
+- Created hoc/asyncComponent.js, see how to use it in Blog.js:
+how the AsyncNewPost variable is used
+
+END OF 4TH COMMIT
+--------------------------------------------------
