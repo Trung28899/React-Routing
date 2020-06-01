@@ -106,3 +106,10 @@ passed by the Link. See in Blog.js
 
     <Route path='/:id' exact component={FullPost} />
 </Switch>
+
+- Nested Routing: Blog (routing to Posts) > in Posts: 
+
+<Link to={this.props.match.url + "/" + post.id} key={post.id}>
+
+<Route path={this.props.match.url + '/:id'} 
+exact component={FullPost} />
